@@ -1,22 +1,22 @@
 function generatePassword() {
-    let length = 15,
-        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789{}()!",
-        retVal = "";
-    for (let i = 0, n = charset.length; i < length; ++i) {
-        retVal += charset.charAt(Math.floor(Math.random() * n));
-    }
-    console.log(retVal);
-document.getElementById("password").value=retVal;
-}
+  const charset =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890<>,?;.:/!§*µù%$£¤¨+=})]à@ç^_`è|-[({'#é~&0";
 
-function copyPassword(){
-let copyText = document.getElementById("password");
+  let length = document.getElementById("length").value;
 
-  /* Select the text field */
-copyText.select();
-copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+  if (!length || length < 5 || length > 20) {
+    alert(
+      "La longueur du mot de passe doit être comprise entre 5 et 20 caractères."
+    );
+    return;
+  }
+  let password = "";
 
-  /* Copy the text inside the text field */
-//  document.execCommand("copy");
-document.getElementById("copied").textContent = "Password copied: " + copyText.value;
+  for (let i = 0; i < length; i++) {
+    const indexCharset = Math.floor(Math.random() * charset.length);
+    password += charset[indexCharset]; //     password += charset.charAt(indexCharset);
+  }
+
+  console.log(password);
+  document.getElementById("password").value = password;
 }
