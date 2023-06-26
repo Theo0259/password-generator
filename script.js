@@ -2,7 +2,7 @@ function generatePassword() {
   const charset =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890<>,?;.:/!§*µù%$£¤¨+=})]à@ç^_`è|-[({'#é~&0";
 
-  let length = document.getElementById("length").value;
+  let length = document.getElementById("length").value || 12 ;
 
   if (!length || length < 5 || length > 20) {
     alert(
